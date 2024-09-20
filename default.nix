@@ -89,30 +89,30 @@ project ./. ({ pkgs, hackGet, ... }@args:
         
   in 
     {
-      packages = {
-        obelisk-oauth-common = (hackGet ./thunks/obelisk-oauth) + "/common";
-        obelisk-oauth-backend = (hackGet ./thunks/obelisk-oauth) + "/backend";
-        stripe-haskell = (hackGet ./thunks/stripe) + "/stripe-haskell";
-        stripe-core = (hackGet ./thunks/stripe) + "/stripe-core";
-        stripe-http-client = (hackGet ./thunks/stripe) + "/stripe-http-client";
-        stripe-http-streams = (hackGet ./thunks/stripe) + "/stripe-http-streams";
-        stripe-tests = (hackGet ./thunks/stripe) + "/stripe-tests";
-#        reflex-classhss = super.callPackage thunkSet.reflex-classh {}; 
-      };
-      overrides = pkgs.lib.composeExtensions
-        (pkgs.callPackage (hackGet ./thunks/rhyolite) args).haskellOverrides
+#       packages = {
+#         obelisk-oauth-common = (hackGet ./thunks/obelisk-oauth) + "/common";
+#         obelisk-oauth-backend = (hackGet ./thunks/obelisk-oauth) + "/backend";
+#         stripe-haskell = (hackGet ./thunks/stripe) + "/stripe-haskell";
+#         stripe-core = (hackGet ./thunks/stripe) + "/stripe-core";
+#         stripe-http-client = (hackGet ./thunks/stripe) + "/stripe-http-client";
+#         stripe-http-streams = (hackGet ./thunks/stripe) + "/stripe-http-streams";
+#         stripe-tests = (hackGet ./thunks/stripe) + "/stripe-tests";
+# #        reflex-classhss = super.callPackage thunkSet.reflex-classh {}; 
+#       };
+      overrides = #pkgs.lib.composeExtensions
+        # (pkgs.callPackage (hackGet ./thunks/rhyolite) args).haskellOverrides
         (self: super: with pkgs.haskell.lib; {
-          beam-automigrate = doJailbreak (self.callCabal2nix "beam-automigrate" (hackGet ./thunks/beam-automigrate) {});
-          bytestring-aeson-orphans = doJailbreak (super.bytestring-aeson-orphans);
-          ClasshSS = super.callPackage (thunkSet.ClasshSS) {}; 
-          #dependent-sum-aeson-orphans = doJailbreak (super.dependent-sum-aeson-orphans);
+          # beam-automigrate = doJailbreak (self.callCabal2nix "beam-automigrate" (hackGet ./thunks/beam-automigrate) {});
+          # bytestring-aeson-orphans = doJailbreak (super.bytestring-aeson-orphans);
+          # ClasshSS = super.callPackage (thunkSet.ClasshSS) {}; 
+          # #dependent-sum-aeson-orphans = doJailbreak (super.dependent-sum-aeson-orphans);
           
-          parseargs = dontCheck (super.parseargs);
-          reflex-classhss = super.callPackage thunkSet.reflex-classh {}; 
-          reflex-dom-echarts = self.callCabal2nix "reflex-dom-echarts" reflex-dom-echartsSrc {};
-          echarts-jsdom = self.callCabal2nix "echarts-jsdom" echarts-jsdomSrc {};
+          # parseargs = dontCheck (super.parseargs);
+          # reflex-classhss = super.callPackage thunkSet.reflex-classh {}; 
+          # reflex-dom-echarts = self.callCabal2nix "reflex-dom-echarts" reflex-dom-echartsSrc {};
+          # echarts-jsdom = self.callCabal2nix "echarts-jsdom" echarts-jsdomSrc {};
 
-          vessel = (super.vessel);
+          # vessel = (super.vessel);
           #ghc-syntax-highlighter = doJailbreak (ghc-syntax-highlighter_0_0_7);
           #mmark-ext = doJailbreak (dontCheck ( (mmark-ext_1)));
           # mmark = dontCheck mmark_0_0_7_6;
@@ -126,22 +126,22 @@ project ./. ({ pkgs, hackGet, ... }@args:
           
           ghc-lib-parser = ghc-lib-parser_8_10_7; # (super.ghc-lib-parser);
 
-          snap-extras = doJailbreak (super.snap-extras);
-          stripe-core = doJailbreak (super.stripe-core);
-          stripe-http-client = doJailbreak (super.stripe-http-client);
-          stripe-tests = doJailbreak (super.stripe-tests);
-          scrappy-core = super.callPackage (thunkSet.scrappy-core) {}; #scrappy-corePkg;
-          scrappy-template = super.callPackage (thunkSet.scrappy-template) {};
-          gargoyle-postgresql-nix = haskellLib.overrideCabal super.gargoyle-postgresql-nix {
-            librarySystemDepends = [ pkgs.postgresql_11 ];
-          };
-          backend = haskellLib.overrideCabal super.backend {
-            librarySystemDepends = [
-              pkgs.ffmpeg
-            ];
-          };
+          # snap-extras = doJailbreak (super.snap-extras);
+          # stripe-core = doJailbreak (super.stripe-core);
+          # stripe-http-client = doJailbreak (super.stripe-http-client);
+          # stripe-tests = doJailbreak (super.stripe-tests);
+          # scrappy-core = super.callPackage (thunkSet.scrappy-core) {}; #scrappy-corePkg;
+          # scrappy-template = super.callPackage (thunkSet.scrappy-template) {};
+          # gargoyle-postgresql-nix = haskellLib.overrideCabal super.gargoyle-postgresql-nix {
+          #   librarySystemDepends = [ pkgs.postgresql_11 ];
+          # };
+          # backend = haskellLib.overrideCabal super.backend {
+          #   librarySystemDepends = [
+          #     pkgs.ffmpeg
+          #   ];
+          # };
         });
-      staticFiles = import ./static {inherit pkgs; };
+#      staticFiles = import ./static {inherit pkgs; };
       android.applicationId = "systems.obsidian.obelisk.examples.rhyolite";
       android.displayName = "Rhyolite Example App";
       ios.bundleIdentifier = "systems.obsidian.obelisk.examples.rhyolite";
