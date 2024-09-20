@@ -119,12 +119,14 @@ project ./. ({ pkgs, hackGet, ... }@args:
           #mmark = doJailbreak (self.callCabal2nix "mmark" (hackGet ./thunks/mmark) {}); 
           #mmark = dontCheck (p_mmark-ext.haskellPackages.mmark);
 
+          # https://github.com/NixOS/nixpkgs/issues/170897
+          # https://github.com/NixOS/nixpkgs/issues/169332#issuecomment-1106552971
           ghc-syntax-highlighter = ghc-syntax-highlighter_0_0_6;#(super.ghc-syntax-highlighter);
           mmark-ext = dontHaddock (doJailbreak (self.callCabal2nix "mmark-ext" (hackGet ./thunks/mmark-ext) {})); 
           # my-mmark = doJailbreak (self.callCabal2nix "my-mmark" (hackGet ./thunks/my-mmark) {}); 
 
           
-          ghc-lib-parser = ghc-lib-parser_8_10_7; # (super.ghc-lib-parser);
+          #ghc-lib-parser = ghc-lib-parser_8_10_7; # (super.ghc-lib-parser);
 
           # snap-extras = doJailbreak (super.snap-extras);
           # stripe-core = doJailbreak (super.stripe-core);

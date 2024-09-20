@@ -1,0 +1,33 @@
+name:            mmark-ext
+version:         0.2.1.5
+cabal-version:   >= 1.8
+
+category:        Text
+build-type:      Simple
+
+library
+    exposed-modules:
+        Text.MMark.Extension.Common
+        Text.MMark.Extension.Comment
+        Text.MMark.Extension.FontAwesome
+        Text.MMark.Extension.Footnotes
+        Text.MMark.Extension.GhcSyntaxHighlighter
+        Text.MMark.Extension.Kbd
+        Text.MMark.Extension.LinkTarget
+        Text.MMark.Extension.MathJax
+        Text.MMark.Extension.ObfuscateEmail
+        Text.MMark.Extension.PunctuationPrettifier
+        Text.MMark.Extension.Skylighting
+        Text.MMark.Extension.TableOfContents
+
+    build-depends:
+        base
+      , foldl
+      , ghc-syntax-highlighter
+      , lucid
+      , microlens
+      , mmark
+      , modern-uri
+      , skylighting
+      , text
+
