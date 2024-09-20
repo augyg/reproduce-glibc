@@ -1,0 +1,20 @@
+function toggleOpenDropdown() {
+    const dropdownId = "solutionsDropdown"
+    const dropdown = document.getElementById(dropdownId);
+    console.log("fired");
+    if (dropdown) {
+        if (dropdown.classList.contains('block')) {
+            // If open, close
+	    dropdown.classList.add('hidden');
+            dropdown.classList.remove('block');	    
+        } else {
+            // If closed, open 
+            dropdown.classList.add('block');
+	    dropdown.classList.remove('hidden');
+        }  
+    }
+}
+    
+function scrollToTop() {}
+
+
